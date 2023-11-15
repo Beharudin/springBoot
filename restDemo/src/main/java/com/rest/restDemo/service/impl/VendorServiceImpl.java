@@ -1,5 +1,6 @@
 package com.rest.restDemo.service.impl;
 
+import com.rest.restDemo.exception.CloudVendorConflictException;
 import com.rest.restDemo.exception.CloudVendorNotFoundException;
 import com.rest.restDemo.model.CloudVendor;
 import com.rest.restDemo.repository.VendorRepository;
@@ -30,8 +31,14 @@ public class VendorServiceImpl implements VendorService {
     }
 
     public String addCloudVendor(CloudVendor cloudVendor){
+        Optional<CloudVendor> existingVendor=vendorRepository.findById(cloudVendor.getVendorId());
+
+        if(existingVendor.isPresent()){
+            throw new CloudVendorConflictException("Duplicate vendor id");
+        }else{
         vendorRepository.save(cloudVendor);
         return "Succesfully Added";
+        }
     }
 
     public String updateVendorById(Integer id, CloudVendor cloudVendor) {
