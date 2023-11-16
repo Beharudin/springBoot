@@ -20,7 +20,6 @@ public class VendorServiceImpl implements VendorService {
         this.vendorRepository = vendorRepository;
     }
 
-    private List<CloudVendor> vendors=new ArrayList<>();
     public CloudVendor getCloudVendorById(Integer id){
         if(vendorRepository.findById(id).isEmpty())
             throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
