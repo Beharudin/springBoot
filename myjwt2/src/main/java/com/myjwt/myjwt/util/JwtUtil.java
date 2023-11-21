@@ -62,17 +62,4 @@ public class JwtUtil {
         final String email=extractUsername(token);
         return (email.equals(user.getUsername()) && !isTokenExpired(token));
     }
-
-//    private static CustomUserDetailsService customUserDetailsService;
-
-//    public static String generateAccessToken(JwtUser user, HttpServletRequest request) {
-//
-//
-//        return OAuth2ResourceServerProperties.Jwt.create()
-//                .withSubject(user.getUsername())
-//                .withIssuedAt(new Date())
-//                .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION_TIME)) // 30 minutes
-//                .withClaim("role", role)
-//                .sign(Algorithm.HMAC256(SECRET_KEY.getBytes()));
-//    }
 }
