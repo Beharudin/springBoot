@@ -3,6 +3,7 @@ package com.myjwt.myjwt.controllers;
 import com.myjwt.myjwt.dto.LoginRequest;
 import com.myjwt.myjwt.model.JwtUser;
 import com.myjwt.myjwt.response.ResponseHandler;
+import com.myjwt.myjwt.service.JwtUserDao;
 import com.myjwt.myjwt.service.impl.JwtServiceImpl;
 import com.myjwt.myjwt.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,13 @@ import java.util.Map;
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtServiceImpl jwtService;
+    private final JwtUserDao jwtUserDao;
     private final JwtUtil jwtUtil;
 
     @PostMapping("/login")
     public ResponseEntity<Object> authenticate(@RequestBody LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        final UserDetails user = jwtService.findUserByEmail(request.getEmail());
+        final UserDetails user = jwtUserDao.findUserByEmail(request.getEmail());
 
         if (user != null) {
         final String name=jwtService.getUserByEmail(request.getEmail()).getFullName();

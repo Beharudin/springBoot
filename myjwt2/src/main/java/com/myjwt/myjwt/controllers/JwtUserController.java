@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +19,7 @@ public class JwtUserController {
     private JwtService jwtService;
 
     @GetMapping()
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Object> getAllUsers(){
         return  ResponseHandler.responseBuilder("Success", HttpStatus.OK, jwtService.getAllUsers());
     }
