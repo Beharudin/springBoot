@@ -1,7 +1,6 @@
 package com.myjwt.myjwt.controllers;
 
 import com.myjwt.myjwt.dto.LoginRequest;
-import com.myjwt.myjwt.model.JwtUser;
 import com.myjwt.myjwt.response.ResponseHandler;
 import com.myjwt.myjwt.service.JwtUserDao;
 import com.myjwt.myjwt.service.impl.JwtServiceImpl;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @RestController

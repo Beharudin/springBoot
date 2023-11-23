@@ -1,7 +1,6 @@
 package com.myjwt.myjwt.config;
 
 import com.myjwt.myjwt.service.JwtUserDao;
-import com.myjwt.myjwt.service.impl.JwtServiceImpl;
 import com.myjwt.myjwt.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,9 +15,9 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 import java.io.IOException;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @Component
 @RequiredArgsConstructor
